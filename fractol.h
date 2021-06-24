@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 22:38:12 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/06/15 16:44:10 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/06/22 15:49:02 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define K_MINUS	44
 # define SCROLL_UP		4
 # define SCROLL_DOWN	5
+# define K_Z	6
+# define K_X	7
 
 /*
 ** X11 Events
@@ -78,42 +80,40 @@ typedef struct s_keys
 	int	scroll_out;
 	int	plus;
 	int	minus;
+	int	z;
+	int	x;
 }	t_keys;
 
 typedef struct s_julia
 {
 	double			c_re;
-	double			c_im;		 	 //real and imaginary part of the constant c
+	double			c_im;
 	double			new_re;
 	double			new_im;
 	double			old_re;
-	double			old_im;	 	 //real and imaginary parts of new and old z
+	double			old_im;
 	double			zoom;
 	double			move_x;
-	double			move_y;		//you can change these to zoom and change position
-	unsigned int	color;	 	 //the RGB color value for the pixel
-	int				max_iterations;  //after how much iterations the function should stop
-	/* double			time;
-	double			old_time; */
-	double			frame_time; //current and old time, and their difference (for input)
+	double			move_y;
+	unsigned int	color;
+	int				max_iterations;
+	double			frame_time;
 }	t_julia;
 
 typedef struct s_mandelbrot
 {
 	double			pr;
-	double			pi;		 	 //real and imaginary part of the pixel p
+	double			pi;
 	double			new_re;
 	double			new_im;
 	double			old_re;
-	double			old_im;	 	 //real and imaginary parts of new and old z
+	double			old_im;
 	double			zoom;
 	double			move_x;
-	double			move_y;		//you can change these to zoom and change position
-	unsigned int	color;	 	 //the RGB color value for the pixel
-	int				max_iterations;  //after how much iterations the function should stop
-	/* double			time;
-	double			old_time; */
-	double			frame_time; //current and old time, and their difference (for input)
+	double			move_y;
+	unsigned int	color;
+	int				max_iterations;
+	double			frame_time;
 }	t_mandelbrot;
 
 typedef struct s_fractol
@@ -128,13 +128,15 @@ typedef struct s_fractol
 	int				eje_y;
 	t_keys			key;
 	t_data			img;
+	int				mouse_x;
+	int				mouse_y;
 }	t_fractol;
 
 void	print_error(char *str);
 int		keys_press(int tecla, t_fractol *fractol);
 int		keys_release(int tecla, t_fractol *fractol);
 int		scroll_mouse(int tecla, int x, int y, t_fractol *fractol);
-int		destroy();
+int		destroy(void);
 int		mandelbrot(t_fractol *fractol);
 int		julia(t_fractol *fractol);
 int		create_trgb(int t, int r, int g, int b);

@@ -6,13 +6,13 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 00:24:24 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/06/02 18:44:01 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:55:14 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void print_error(char *str)
+void	print_error(char *str)
 {
 	printf("\nError\n");
 	printf("\n  %s\n", str);

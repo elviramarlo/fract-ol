@@ -6,11 +6,9 @@
 #    By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/02 18:00:57 by elvmarti          #+#    #+#              #
-#    Updated: 2021/06/15 16:44:32 by elvmarti         ###   ########.fr        #
+#    Updated: 2021/06/22 16:11:57 by elvmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-DAY	= $(shell date +'%d/%m/%Y %H:%M')
 
 NAME = fractol
 
@@ -20,7 +18,6 @@ SRCS = main.c \
 		print_error.c \
 		keys.c \
 		pixel_color.c \
-		rgb.c \
 		mandelbrot.c \
 		julia.c
 
@@ -51,12 +48,12 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 		$(CC) ${CFLAGS} ${OBJS} -I $(HEADER_B) -L. ${LIBFT} ${MLXFLAGS} $(MLXNAME) -o ${NAME}
 
 $(MINILIBX):
-		@echo $(PURPLE)Make minilibx ... $(RESET)
+		@echo $(PURPLE)Minilibx $(RESET)
 		make -C $(MLX)
 		cp $(MINILIBX) .
 
 $(LIBFT):		
-		@echo $(PURPLE)Make libft ... $(RESET)
+		@echo $(PURPLE)Libft $(RESET)
 		make re -C $(LIBFTPATH)
 
 all: $(NAME)
@@ -105,8 +102,8 @@ git:
 		@echo $(GREEN)GIT add ... $(RESET)
 		@git add . || true 
 		@echo $(GREEN)GIT commit ... $(RESET)
-		@git commit -m "$(DAY)" || true 
+		@git commit -m "fractol" || true 
 		@echo $(GREEN)GIT push ... $(RESET)
-		@git push -u origin master || true 
+		@git push -u origin master --force || true 
 						
 .PHONY: all clean fclean re
